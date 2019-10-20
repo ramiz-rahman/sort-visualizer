@@ -1,0 +1,25 @@
+@import '../../../_settngs/variables.css';
+
+.Bar {
+  background-color: white;
+  border: 2px solid var(--gray-500);
+  display: flex;
+  flex-direction: column reverse;
+  align-items: flex-end;
+}
+
+.Bar__Text {
+  margin: 0 auto 0.25rem;
+}
+
+.Bar_comparing {
+  background-color: var(--red-500);
+}
+
+.Bar_compared {
+  background-color: var(--green-500);
+}
+
+.Bar_sorted {
+  background-color: var(--blue);
+}
