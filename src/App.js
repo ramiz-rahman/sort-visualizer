@@ -5,18 +5,23 @@ import SortChart from './components/organisms/SortChart/';
 
 class App extends Component {
   state = {
-    numbers: [9, 7, 13, 2, 5, 6, 8, 1],
-    max_num: 0,
+    array: [],
+
+    arraySize: 10,
+    slowDown: 5,
+
     comparing: [],
     compared: [],
     sorted: [],
+
+    trace: [],
+    traceStep: -1,
+
     timeoutIds: []
   };
 
   componentDidMount() {
-    this.setState((prevState) => ({
-      max_num: Math.max(...prevState.numbers)
-    }));
+    this.generateRandomArray(this.state.arraySize);
   }
 
   clearTimeouts = () => {
@@ -25,28 +30,28 @@ class App extends Component {
     );
   };
 
-  runVisualizer = (trace) => {
-    const timeoutIds = [];
+  generateRandomArray(max = 10) {
+    // Generate pseudo-random number between 1 and max
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max)) + 1;
+    }
 
-    trace.forEach((item, i) => {
-      let timeoutId = setTimeout(
-        (item) => {
-          this.setState({
-            current: [item.j, item.j + 1],
-            numbers: item.nums,
-            comparing: item.comparing,
-            compared: item.compared,
-            sorted: item.sorted
-          });
-        },
-        i * 400,
-        item
-      );
+    // Generate an array of length max
+    const array = Array(max)
+      .fill(0)
+      .map(() => getRandomInt(max * 5));
 
-      timeoutIds.push(timeoutId);
-    });
+    this.clearTimeouts();
+    this.setState({ array, trace: [], traceStep: -1 });
+  }
 
-    this.setState({ timeoutIds });
+  handleArraySizeChange = (e) => {
+    e.preventDefault();
+    this.clearTimeouts();
+    let size = Number(e.target.value);
+    size = size > 100 ? 100 : size;
+    size = size < 0 ? 0 : size;
+    this.setState({ arraySize: size }, this.generateRandomArray(size));
   };
 
   bubbleSort = (nums) => {
@@ -122,8 +127,110 @@ class App extends Component {
     return trace;
   };
 
+  _changeVisualState = (visualState) => {
+    this.setState({
+      current: [visualState.j, visualState.j + 1],
+      array: visualState.nums,
+      comparing: visualState.comparing,
+      compared: visualState.compared,
+      sorted: visualState.sorted
+    });
+  };
+
+  runVisualizer = (trace) => {
+    const timeoutIds = [];
+
+    trace.forEach((item, i) => {
+      let timeoutId = setTimeout(
+        (item) => {
+          this.setState(
+            (prevState) => ({
+              traceStep: prevState.traceStep + 1
+            }),
+            this._changeVisualState(item)
+          );
+        },
+        i * (this.state.slowDown / this.state.arraySize) * 1000,
+        item
+      );
+
+      timeoutIds.push(timeoutId);
+    });
+
+    this.setState({ timeoutIds });
+  };
+
   stop = () => {
     this.clearTimeouts();
+  };
+
+  pause = () => {
+    this.clearTimeouts();
+  };
+
+  continue = () => {
+    const trace = this.state.trace.slice(this.state.traceStep);
+    this.runVisualizer(trace);
+  };
+
+  stepForward = () => {
+    const trace = this.state.trace;
+    const step = this.state.traceStep;
+    if (step < trace.length - 1) {
+      const item = trace[step + 1];
+      this.setState(
+        { traceStep: step + 1 },
+        this._changeVisualState(item)
+      );
+    }
+
+    /*  this.setState((prevState) => {
+      const trace = prevState.trace;
+      const step = prevState.traceStep;
+
+      if (step < trace.length - 1) {
+        const item = trace[step + 1];
+        this._changeVisualState(item);
+        return {
+          // current: [item.j, item.j + 1],
+          // array: item.nums,
+          // comparing: item.comparing,
+          // compared: item.compared,
+          // sorted: item.sorted,
+          traceStep: step + 1
+        };
+      }
+    }); */
+  };
+
+  stepBackward = () => {
+    const trace = this.state.trace;
+    const step = this.state.traceStep;
+    if (step > 0) {
+      const item = trace[step - 1];
+      this.setState(
+        { traceStep: step - 1 },
+        this._changeVisualState(item)
+      );
+    }
+
+    /* this.setState((prevState) => {
+      const trace = prevState.trace;
+      const step = prevState.traceStep;
+
+      if (step > 0) {
+        const item = trace[step - 1];
+
+        return {
+          current: [item.j, item.j + 1],
+          array: item.nums,
+          comparing: item.comparing,
+          compared: item.compared,
+          sorted: item.sorted,
+          traceStep: step - 1
+        };
+      }
+    }); */
   };
 
   run = () => {
@@ -131,27 +238,94 @@ class App extends Component {
     this.clearTimeouts();
 
     // Create a copy of the state array
-    const numbers = [...this.state.numbers];
+    const numbers = [...this.state.array];
 
     // Run sorting algorithm and build the trace
     const trace = this.bubbleSort(numbers);
     console.log(trace);
+    this.setState({ trace });
     // Run the visualizer
     this.runVisualizer(trace);
+    console.log(this.state);
   };
 
   render() {
     return (
       <div className="App">
-        <SortChart
-          numbers={this.state.numbers}
-          maxNum={this.state.max_num}
-          comparingIndices={this.state.comparing}
-          comparedIndices={this.state.compared}
-          sortedIndices={this.state.sorted}
-        />
-        <button onClick={this.run}>Run</button>
-        <button onClick={this.stop}>Stop</button>
+        <header
+          style={{
+            marginBottom: '20px',
+            backgroundColor: 'grey',
+            height: '40px'
+          }}
+        >
+          <button
+            onClick={this.generateRandomArray.bind(
+              this,
+              this.state.arraySize
+            )}
+          >
+            Generate New Array
+          </button>
+          <label>
+            Array Size:{' '}
+            <input
+              type="number"
+              max="100"
+              onChange={this.handleArraySizeChange}
+              value={this.state.arraySize}
+            />
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="speed"
+              value="Slow"
+              onChange={() => this.setState({ slowDown: 10 })}
+            />
+            Slow
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="speed"
+              value="Medium"
+              checked
+              onChange={() => this.setState({ slowDown: 5 })}
+            />
+            Medium
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="speed"
+              value="Fast"
+              onChange={() => this.setState({ slowDown: 1 })}
+            />
+            Fast
+          </label>
+          {/* Array Speed Selector */}
+          {/* Create Slider */}
+          {/* Algorithm */}
+          <button onClick={this.run}>Run</button>
+          <button onClick={this.stop}>Stop</button>
+        </header>
+
+        <section>
+          <SortChart
+            numbers={this.state.array}
+            maxNum={Math.max(...this.state.array)}
+            comparingIndices={this.state.comparing}
+            comparedIndices={this.state.compared}
+            sortedIndices={this.state.sorted}
+          />
+
+          {/* Controls */}
+          <button onClick={this.pause}>Pause</button>
+          <button onClick={this.stepForward}>Step Forward</button>
+          <button onClick={this.stepBackward}>Step Backward</button>
+          <button onClick={this.continue}>Continue</button>
+        </section>
       </div>
     );
   }

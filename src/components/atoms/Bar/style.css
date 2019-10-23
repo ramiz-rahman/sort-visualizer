@@ -2,7 +2,6 @@
 
 .Bar {
   background-color: white;
-  border: 2px solid var(--gray-500);
   display: flex;
   flex-direction: column reverse;
   align-items: flex-end;

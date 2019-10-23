@@ -4,16 +4,11 @@
   width: 960px;
   min-height: 400px;
   height: 50vh;
+  padding: 2rem;
+
   background-color: var(--blue-500);
+
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-}
-
-.SortChart div {
-  margin-right: 0.5rem;
-}
-
-.SortChart div:last-child {
-  margin: 0;
 }

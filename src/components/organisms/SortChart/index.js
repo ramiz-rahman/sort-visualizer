@@ -31,21 +31,24 @@ const getListOfBars = (
   sortedIndices
 ) => {
   return numbers.map((num, i) => {
-    let width = 100;
+    let width = 100 / numbers.length;
     let height = (num / maxNum) * 100;
     let comparing = comparingIndices.includes(i);
     let compared = comparedIndices.includes(i);
     let sorted = sortedIndices.includes(i);
 
+    let margin =
+      i === numbers.length ? '0' : width > 3 ? '0.5rem' : '0.125rem';
     return (
       <Bar
         key={`${i}_${num}`}
         width={width}
         height={height}
-        val={num}
+        val={width > 4 ? num : null}
         comparing={comparing}
         compared={compared}
         sorted={sorted}
+        style={{ marginRight: `${margin}` }}
       />
     );
   });
