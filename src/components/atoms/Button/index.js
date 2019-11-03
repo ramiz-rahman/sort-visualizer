@@ -14,9 +14,9 @@ function buildClassNames(rootClass, ClassMappings, userClassName) {
   return classNames;
 }
 
-function renderIcon(icon) {
+function renderIcon(icon, iconClass) {
   const ICON = icon;
-  return <ICON className={CSS_CLASSES.ICON} />;
+  return <ICON className={`${CSS_CLASSES.ICON} ${iconClass}`} />;
 }
 
 const Button = ({
@@ -27,6 +27,7 @@ const Button = ({
   dense,
   disabled,
   icon,
+  iconClass,
   href,
   onClick,
   children
@@ -45,7 +46,7 @@ const Button = ({
   if (href) {
     return (
       <a href={href} className={classNames} disabled={disabled}>
-        {icon ? renderIcon(icon) : null}
+        {icon ? renderIcon(icon, iconClass) : null}
         <span className="Button__Label">{children}</span>
       </a>
     );
@@ -57,7 +58,7 @@ const Button = ({
       className={classNames}
       disabled={disabled}
     >
-      {icon ? renderIcon(icon) : null}
+      {icon ? renderIcon(icon, iconClass) : null}
       <span className="Button__Label">{children}</span>
     </button>
   );
