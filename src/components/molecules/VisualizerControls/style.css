@@ -1,0 +1,30 @@
+@import '../../../_settngs/variables.css';
+
+.VisualizerControls {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.VisualizerControls__CenterButton {
+  height: 4rem;
+  width: 4rem;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--secondary);
+}
+
+.VisualizerControls__CenterButton:hover,
+.VisualizerControls__CenterButton:focus {
+  background-color: var(--secondary-dark);
+}
+
+.VisualizerControls__CenterButton:disabled {
+  background-color: var(--gray-500);
+}
+
+.VisualizerControls__Icon {
+  height: 2rem;
+  width: 2rem;
+  margin: 0;
+}
