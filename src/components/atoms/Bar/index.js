@@ -15,11 +15,11 @@ const Bar = ({
   if (compared) classNames += ' Bar_compared';
   if (sorted) classNames += ' Bar_sorted';
 
+  let BarStyle = { ...style, width: `${width}%`, height: `${height}%` };
+  if (comparing) BarStyle['marginRight'] = `2rem`;
+
   return (
-    <div
-      style={{ ...style, width: `${width}%`, height: `${height}%` }}
-      className={classNames}
-    >
+    <div style={BarStyle} className={classNames}>
       <span className="Bar__Text">{val}</span>
     </div>
   );
