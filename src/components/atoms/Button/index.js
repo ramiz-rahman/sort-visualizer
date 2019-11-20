@@ -25,6 +25,7 @@ const Button = ({
   unelevated,
   outlined,
   dense,
+  notCased,
   disabled,
   icon,
   iconClass,
@@ -38,7 +39,8 @@ const Button = ({
       [CSS_CLASSES.DENSE]: dense,
       [CSS_CLASSES.RAISED]: raised,
       [CSS_CLASSES.OUTLINED]: outlined,
-      [CSS_CLASSES.UNELEVATED]: unelevated
+      [CSS_CLASSES.UNELEVATED]: unelevated,
+      [CSS_CLASSES.UPPERCASE]: !notCased
     },
     className
   );
@@ -70,6 +72,7 @@ Button.propTypes = {
   unelevated: PropTypes.bool,
   outlined: PropTypes.bool,
   dense: PropTypes.bool,
+  notCased: PropTypes.bool,
   disabled: PropTypes.bool,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   href: PropTypes.string,

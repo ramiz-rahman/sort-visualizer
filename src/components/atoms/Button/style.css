@@ -15,7 +15,6 @@
   line-height: 2.25rem;
   font-weight: 500;
   text-decoration: none;
-  text-transform: uppercase;
 
   padding: 0 var(--button-horizontal-padding);
   background-color: rgba(0, 0, 0, 0);
@@ -65,6 +64,10 @@
 }
 
 /* Modifiers */
+.Button_uppercase {
+  text-transform: uppercase;
+}
+
 .Button_dense {
   height: var(--button-height-dense);
   font-size: 0.8125rem;

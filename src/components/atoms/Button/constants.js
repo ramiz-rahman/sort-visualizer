@@ -5,5 +5,6 @@ export const CSS_CLASSES = {
   DENSE: 'Button_dense',
   RAISED: 'Button_raised',
   OUTLINED: 'Button_outlined',
-  UNELEVATED: 'Button_unelevated'
+  UNELEVATED: 'Button_unelevated',
+  UPPERCASE: 'Button_uppercase'
 };
