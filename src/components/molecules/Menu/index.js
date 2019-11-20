@@ -49,7 +49,8 @@ class Menu extends Component {
       selected,
       onSelect,
       placeholder,
-      items
+      items,
+      noDropIcon
     } = this.props;
 
     return (
@@ -57,15 +58,29 @@ class Menu extends Component {
         <Backdrop show={this.state.open} onClick={this.close} />
         <div className={`${Menu} ${className}`}>
           <header className="Menu__Header">
-            {selected ? (
-              <div>{selected}</div>
+            {noDropIcon ? (
+              <Button
+                onClick={this.toggle}
+                notCased
+                className={selected ? null : 'Menu__Placeholder'}
+              >
+                {selected ? selected : placeholder}
+              </Button>
             ) : (
-              <div className="Menu__Placeholder">{placeholder}</div>
+              <div
+                className={
+                  selected ? 'Menu__SelectedItem' : 'Menu__Placeholder'
+                }
+              >
+                {selected ? selected : placeholder}
+              </div>
             )}
-            <Button
-              icon={this.state.open ? AngleUp : AngleDown}
-              onClick={this.toggle}
-            />
+            {noDropIcon ? null : (
+              <Button
+                icon={this.state.open ? AngleUp : AngleDown}
+                onClick={this.toggle}
+              />
+            )}
           </header>
           <MenuList
             open={this.state.open}
@@ -86,7 +101,8 @@ Menu.propTypes = {
   selected: PropTypes.string,
   onSelect: PropTypes.func,
   placeholder: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.string)
+  items: PropTypes.arrayOf(PropTypes.string),
+  noDropIcon: PropTypes.bool
 };
 
 export default Menu;

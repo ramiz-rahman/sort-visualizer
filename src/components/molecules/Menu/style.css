@@ -31,7 +31,16 @@
   align-items: center;
   justify-content: space-between;
   height: 2.5rem;
-  padding: 0.5rem 0rem 0.5rem 1rem;
+  padding: 0.5rem 0rem;
+}
+
+.Menu__SelectedItem {
+  min-width: 32px;
+  text-align: right;
+}
+
+.Menu__Placeholder {
+  color: var(--gray-500);
 }
 
 .Menu__Item {
