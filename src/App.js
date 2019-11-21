@@ -12,6 +12,25 @@ class App extends Component {
     algorithm: null
   };
 
+  _addToTrace = (
+    trace,
+    i,
+    j,
+    array,
+    comparingIndices = [],
+    comparedIndices = [],
+    sortedIndices = []
+  ) => {
+    trace.push({
+      i,
+      j,
+      array: [...array],
+      comparingIndices: [...comparingIndices],
+      comparedIndices: [...comparedIndices],
+      sortedIndices: [...sortedIndices]
+    });
+  };
+
   bubbleSort = (nums) => {
     // Set up code for tracing the algorithm
     const addToTrace = (
@@ -86,8 +105,101 @@ class App extends Component {
     return trace;
   };
 
+  selectionSort = (nums) => {
+    // Initial State
+    const trace = [
+      {
+        i: 0,
+        j: 0,
+        array: [...nums],
+        comparingIndices: [],
+        comparedIndices: [],
+        sortedIndices: []
+      }
+    ];
+
+    // Core Algorithm
+    for (let i = 0; i < nums.length - 1; i++) {
+      // Internal Loop: Find index of min value
+      let minIndex = i;
+      for (let j = i + 1; j < nums.length; j++) {
+        this._addToTrace(
+          trace,
+          i,
+          j,
+          nums,
+          [minIndex, j],
+          [],
+          [...trace[trace.length - 1].sortedIndices]
+        );
+        if (nums[j] < nums[minIndex]) {
+          this._addToTrace(
+            trace,
+            i,
+            j,
+            nums,
+            [minIndex, j],
+            [minIndex, j],
+            [...trace[trace.length - 1].sortedIndices]
+          );
+          minIndex = j;
+          this._addToTrace(
+            trace,
+            i,
+            j,
+            nums,
+            [minIndex, j],
+            [],
+            [...trace[trace.length - 1].sortedIndices]
+          );
+        }
+      }
+
+      // Swap min value with current value
+      this._addToTrace(
+        trace,
+        i,
+        nums.length - 1 - i,
+        nums,
+        [minIndex],
+        [i],
+        [...trace[trace.length - 1].sortedIndices]
+      );
+      let temp = nums[i];
+      nums[i] = nums[minIndex];
+      nums[minIndex] = temp;
+      this._addToTrace(
+        trace,
+        i,
+        nums.length - 1 - i,
+        nums,
+        [],
+        [minIndex],
+        [...trace[trace.length - 1].sortedIndices, i]
+      );
+    }
+
+    // Final item in the array is sorted
+    this._addToTrace(
+      trace,
+      nums.length - 1,
+      nums.length - 1,
+      nums,
+      [],
+      [],
+      [...trace[trace.length - 1].sortedIndices, nums.length - 1]
+    );
+
+    return trace;
+  };
+
+  ALGORITHM = {
+    'Bubble Sort': this.bubbleSort,
+    'Selection Sort': this.selectionSort
+  };
+
   componentDidMount() {
-    this.generateRandomArray(this.state.arraySize);
+    this.generateRandomArray();
   }
 
   generateRandomArray = () => {
@@ -111,7 +223,7 @@ class App extends Component {
   };
 
   handleAlgorithmChange = (algorithm) => {
-    this.setState({ algorithm });
+    this.setState({ algorithm }, this.generateRandomArray);
   };
 
   handleArraySizeChange = (size) => {
@@ -123,8 +235,11 @@ class App extends Component {
 
   createTrace = () => {
     const numbers = [...this.state.array];
-    const trace = this.bubbleSort(numbers);
-    this.setState({ trace });
+    const sort = this.ALGORITHM[this.state.algorithm];
+    if (sort) {
+      const trace = sort(numbers);
+      this.setState({ trace });
+    }
   };
 
   render() {
