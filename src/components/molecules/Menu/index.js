@@ -56,7 +56,7 @@ class Menu extends Component {
     return (
       <div>
         <Backdrop show={this.state.open} onClick={this.close} />
-        <div className={`${Menu} ${className}`}>
+        <div className={`Menu ${className}`}>
           <header className="Menu__Header">
             {noDropIcon ? (
               <Button
