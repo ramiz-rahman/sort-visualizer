@@ -1,0 +1,8 @@
+@import '../../../_settngs/variables.css';
+
+.SortVisualizer {
+  max-width: 992px;
+  padding: 0.5rem;
+  margin: 2rem auto;
+  box-shadow: var(--box-shadow-2);
+}
