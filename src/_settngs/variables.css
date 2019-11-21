@@ -64,4 +64,7 @@
   --elevation-penumbra-10: 0px 10px 14px 1px;
   --elevation-penumbra-11: 0px 11px 15px 1px;
   --elevation-penumbra-12: 0px 12px 17px 2px;
+
+  --box-shadow-2: var(--elevation-umbra-2) var(--elevation-umbra-color),
+    var(--elevation-penumbra-2) var(--elevation-penumbra-color);
 }
