@@ -8,9 +8,9 @@ import {
   MdPause as Pause,
   MdSkipNext as Forward,
   MdSkipPrevious as Backward,
-  MdShuffle as Shuffle,
   MdRepeat as Repeat
 } from 'react-icons/md';
+import Menu from '../Menu';
 
 // Helper function
 function isDisabled(action, disabled = false) {
@@ -23,8 +23,8 @@ const VisualizerControls = ({
   onPause,
   onBackward,
   onForward,
-  onShuffle,
   onRepeat,
+  onAdjustSpeed,
 
   // States
   playing,
@@ -32,16 +32,16 @@ const VisualizerControls = ({
   pauseDisabled,
   backwardDisabled,
   forwardDisabled,
-  shuffleDisabled,
-  repeatDisabled
+  repeatDisabled,
+  playbackSpeed
 }) => {
   return (
     <div className="VisualizerControls">
-      {/* Shuffle */}
+      {/* Repeat */}
       <Button
-        icon={Shuffle}
-        onClick={onShuffle}
-        disabled={isDisabled(onShuffle, shuffleDisabled)}
+        icon={Repeat}
+        onClick={onRepeat}
+        disabled={isDisabled(onRepeat, repeatDisabled)}
       />
 
       {/* Backward Button  */}
@@ -74,11 +74,13 @@ const VisualizerControls = ({
         iconClass="VisualizerControls__Icon"
       />
 
-      {/* Repeat */}
-      <Button
-        icon={Repeat}
-        onClick={onRepeat}
-        disabled={isDisabled(onRepeat, repeatDisabled)}
+      {/* Playback Speed */}
+      <Menu
+        items={['0.25x', '0.5x', '1x', '2x', '4x']}
+        placeholder="Speed"
+        selected={`${playbackSpeed}x`}
+        onSelect={onAdjustSpeed}
+        noDropIcon
       />
     </div>
   );
@@ -89,15 +91,16 @@ VisualizerControls.propTypes = {
   onPause: PropTypes.func,
   onBackward: PropTypes.func,
   onForward: PropTypes.func,
-  onShuffle: PropTypes.func,
   onRepeat: PropTypes.func,
+  onAdjustSpeed: PropTypes.func,
+
   playing: PropTypes.bool,
   playDisabled: PropTypes.bool,
   pauseDisabled: PropTypes.bool,
   backwardDisabled: PropTypes.bool,
   forwardDisabled: PropTypes.bool,
-  shuffleDisabled: PropTypes.bool,
-  repeatDisabled: PropTypes.bool
+  repeatDisabled: PropTypes.bool,
+  playbackSpeed: PropTypes.number
 };
 
 export default VisualizerControls;
