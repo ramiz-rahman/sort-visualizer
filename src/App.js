@@ -193,9 +193,99 @@ class App extends Component {
     return trace;
   };
 
+  insertionSort = (nums) => {
+    // Initial State
+    const trace = [
+      {
+        i: 0,
+        j: 0,
+        array: [...nums],
+        comparingIndices: [],
+        comparedIndices: [],
+        sortedIndices: []
+      }
+    ];
+
+    // Core Algorithm
+    for (let i = 1; i < nums.length; i++) {
+      let value = nums[i];
+      let hole = i;
+      this._addToTrace(
+        trace,
+        i,
+        null,
+        nums,
+        [i],
+        [],
+        [...trace[trace.length - 1].sortedIndices]
+      );
+      this._addToTrace(
+        trace,
+        i,
+        null,
+        nums,
+        [i],
+        [i],
+        [...trace[trace.length - 1].sortedIndices]
+      );
+      while (hole > 0 && nums[hole - 1] > value) {
+        this._addToTrace(
+          trace,
+          i,
+          null,
+          nums,
+          [hole - 1],
+          [hole],
+          [...trace[trace.length - 1].sortedIndices]
+        );
+        nums[hole] = nums[hole - 1];
+        hole -= 1;
+        this._addToTrace(
+          trace,
+          i,
+          null,
+          nums,
+          [hole],
+          [hole + 1],
+          [...trace[trace.length - 1].sortedIndices]
+        );
+      }
+      this._addToTrace(
+        trace,
+        i,
+        null,
+        nums,
+        [],
+        [hole],
+        [...trace[trace.length - 1].sortedIndices]
+      );
+      nums[hole] = value;
+      this._addToTrace(
+        trace,
+        i,
+        null,
+        nums,
+        [],
+        [hole],
+        [...trace[trace.length - 1].sortedIndices, i - 1]
+      );
+    }
+    this._addToTrace(
+      trace,
+      nums.length - 1,
+      null,
+      nums,
+      [],
+      [],
+      [...trace[trace.length - 1].sortedIndices, nums.length - 1]
+    );
+    return trace;
+  };
+
   ALGORITHM = {
     'Bubble Sort': this.bubbleSort,
-    'Selection Sort': this.selectionSort
+    'Selection Sort': this.selectionSort,
+    'Insertion Sort': this.insertionSort
   };
 
   componentDidMount() {
