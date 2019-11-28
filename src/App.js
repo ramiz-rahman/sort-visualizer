@@ -282,10 +282,124 @@ class App extends Component {
     return trace;
   };
 
+  mergeSort = (nums) => {
+    const addToTrace = (
+      trace,
+      i,
+      j,
+      array,
+      comparingIndices = [],
+      comparedIndices = [],
+      sortedIndices = []
+    ) => {
+      trace.push({
+        i,
+        j,
+        array: [...array],
+        comparingIndices: [...comparingIndices],
+        comparedIndices: [...comparedIndices],
+        sortedIndices: [...sortedIndices]
+      });
+    };
+    // Initial State
+    const trace = [
+      {
+        i: 0,
+        j: 0,
+        array: [...nums],
+        comparingIndices: [],
+        comparedIndices: [],
+        sortedIndices: []
+      }
+    ];
+
+    function merge(original, start, mid, end) {
+      const left = original.slice(start, mid);
+      const right = original.slice(mid, end);
+      let i = 0;
+      let j = 0;
+      let k = 0;
+      while (i < left.length && j < right.length) {
+        if (left[i] <= right[j]) {
+          addToTrace(trace, 0, 0, original, [], [k + start], []);
+          original[k + start] = left[i];
+          i++;
+        } else {
+          addToTrace(trace, 0, 0, original, [], [k + start], []);
+          original[k + start] = right[j];
+          j++;
+        }
+        k++;
+      }
+      while (i < left.length) {
+        addToTrace(trace, 0, 0, original, [], [k + start], []);
+        original[k + start] = left[i];
+        i++;
+        k++;
+      }
+      while (j < right.length) {
+        addToTrace(trace, 0, 0, original, [], [k + start], []);
+        original[k + start] = right[j];
+        j++;
+        k++;
+      }
+
+      left.length = 0;
+      right.length = 0;
+    }
+
+    function recursiveMergeSort(original, start, end) {
+      const length = end - start;
+      if (length < 2) {
+        if (length < 1) return original;
+        else return [original[start]];
+      }
+
+      const midPoint = Math.floor((start + end) / 2);
+      addToTrace(
+        trace,
+        0,
+        0,
+        original,
+        [...Array(midPoint - start).keys()].map((i) => i + start),
+        [],
+        [...trace[trace.length - 1].sortedIndices]
+      );
+      recursiveMergeSort(original, start, midPoint);
+
+      addToTrace(
+        trace,
+        0,
+        0,
+        original,
+        [...Array(end - midPoint).keys()].map((i) => i + midPoint),
+        [],
+        [...trace[trace.length - 1].sortedIndices]
+      );
+      recursiveMergeSort(original, midPoint, end);
+
+      merge(original, start, midPoint, end);
+    }
+
+    recursiveMergeSort(nums, 0, nums.length);
+
+    addToTrace(
+      trace,
+      0,
+      0,
+      nums,
+      [],
+      [],
+      [...Array(nums.length).keys()]
+    );
+    return trace;
+  };
+
   ALGORITHM = {
     'Bubble Sort': this.bubbleSort,
     'Selection Sort': this.selectionSort,
-    'Insertion Sort': this.insertionSort
+    'Insertion Sort': this.insertionSort,
+    'Merge Sort': this.mergeSort
   };
 
   componentDidMount() {
