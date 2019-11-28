@@ -16,7 +16,10 @@ const Bar = ({
   if (sorted) classNames += ' Bar_sorted';
 
   let BarStyle = { ...style, width: `${width}%`, height: `${height}%` };
-  if (comparing) BarStyle['marginRight'] = `2rem`;
+  if (comparing) {
+    BarStyle['marginRight'] = `${0.5 * width}%`;
+    BarStyle['marginLeft'] = `${0.5 * width}% `;
+  }
 
   return (
     <div style={BarStyle} className={classNames}>
