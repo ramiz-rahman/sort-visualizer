@@ -9,6 +9,7 @@ import SelectionSort from './algorithms/SelectionSort';
 import InsertionSort from './algorithms/InsertionSort';
 import MergeSort from './algorithms/MergeSort';
 import QuickSort from './algorithms/QuickSort';
+import QuickSort3 from './algorithms/QuickSort3';
 
 class App extends Component {
   state = {
@@ -23,7 +24,8 @@ class App extends Component {
     'Selection Sort': SelectionSort,
     'Insertion Sort': InsertionSort,
     'Merge Sort': MergeSort,
-    'Quick Sort': QuickSort
+    'Quick Sort': QuickSort,
+    'Quick Sort 3': QuickSort3
   };
 
   componentDidMount() {
