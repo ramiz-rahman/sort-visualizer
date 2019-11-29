@@ -13,8 +13,10 @@ class SortVisualizer extends Component {
 
     originalArray: [],
     array: [],
-    comparingIndices: [],
-    comparedIndices: [],
+    groupA: [],
+    groupB: [],
+    groupC: [],
+    groupD: [],
     sortedIndices: [],
 
     timeoutIds: [],
@@ -38,8 +40,10 @@ class SortVisualizer extends Component {
       array,
       trace: [],
       traceStep: -1,
-      comparingIndices: [],
-      comparedIndices: [],
+      groupA: [],
+      groupB: [],
+      groupC: [],
+      groupD: [],
       sortedIndices: [],
       originalArray: [...array]
     });
@@ -55,8 +59,10 @@ class SortVisualizer extends Component {
   _changeVisualState = (visualState) => {
     this.setState({
       array: visualState.array,
-      comparingIndices: visualState.comparingIndices,
-      comparedIndices: visualState.comparedIndices,
+      groupA: visualState.groupA,
+      groupB: visualState.groupB,
+      groupC: visualState.groupC,
+      groupD: visualState.groupD,
       sortedIndices: visualState.sortedIndices
     });
   };
@@ -159,8 +165,10 @@ class SortVisualizer extends Component {
         <SortChart
           numbers={this.state.array}
           maxNum={Math.max(...this.state.array)}
-          comparingIndices={this.state.comparingIndices}
-          comparedIndices={this.state.comparedIndices}
+          groupA={this.state.groupA}
+          groupB={this.state.groupB}
+          groupC={this.state.groupC}
+          groupD={this.state.groupD}
           sortedIndices={this.state.sortedIndices}
         />
         <ProgressBar

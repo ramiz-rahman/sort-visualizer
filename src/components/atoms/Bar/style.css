@@ -12,14 +12,22 @@
   margin: 0 auto 0.25rem;
 }
 
-.Bar_comparing {
-  background-color: var(--primary-light);
+.Bar_sorted {
+  background-color: var(--primary);
 }
 
-.Bar_compared {
+.Bar_stateD {
+  background-color: blue;
+}
+
+.Bar_stateC {
+  background-color: red;
+}
+
+.Bar_stateB {
   background-color: var(--secondary-light);
 }
 
-.Bar_sorted {
-  background-color: var(--primary);
+.Bar_stateA {
+  background-color: var(--primary-light);
 }

@@ -5,18 +5,22 @@ const Bar = ({
   width,
   height,
   val,
-  comparing,
-  compared,
+  stateA,
+  stateB,
+  stateC,
+  stateD,
   sorted,
   style
 }) => {
   let classNames = 'Bar';
-  if (comparing) classNames += ' Bar_comparing';
-  if (compared) classNames += ' Bar_compared';
   if (sorted) classNames += ' Bar_sorted';
+  if (stateD) classNames += ' Bar_stateD';
+  else if (stateC) classNames += ' Bar_stateC';
+  else if (stateB) classNames += ' Bar_stateB';
+  else if (stateA) classNames += ' Bar_stateA';
 
   let BarStyle = { ...style, width: `${width}%`, height: `${height}%` };
-  if (comparing) {
+  if (stateA || stateB || stateC || stateD) {
     BarStyle['marginRight'] = `${0.5 * width}%`;
     BarStyle['marginLeft'] = `${0.5 * width}% `;
   }
