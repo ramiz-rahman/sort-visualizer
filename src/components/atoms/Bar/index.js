@@ -21,8 +21,8 @@ const Bar = ({
 
   let BarStyle = { ...style, width: `${width}%`, height: `${height}%` };
   if (stateA || stateB || stateC || stateD) {
-    BarStyle['marginRight'] = `${0.5 * width}%`;
-    BarStyle['marginLeft'] = `${0.5 * width}% `;
+    BarStyle['marginRight'] = `${0.3 * width}%`;
+    BarStyle['marginLeft'] = `${0.3 * width}% `;
   }
 
   return (
