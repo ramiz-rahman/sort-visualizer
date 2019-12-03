@@ -28,7 +28,7 @@ const ShellSort = (nums) => {
     }
   }
 
-  addToTrace(trace, nums);
+  addToTrace(trace, nums, createRange(0, nums.length));
   return trace;
 };
 
