@@ -1,23 +1,35 @@
-:root {
-  --blue: rgb(0, 122, 255);
-  --blue-500: rgb(77, 163, 255);
-  --blue-50: rgba(0, 122, 255, 0.5);
-
-  --green: rgb(52, 199, 89);
-  --green-500: rgb(117, 208, 140);
-  --green-50: rgba(52, 199, 89, 0.5);
-
-  --red: rgb(255, 59, 48);
-  --red-500: rgb(255, 131, 125);
-  --red-50: rgba(255, 59, 48, 0.5);
-
+.App {
+  /* MD Green 400 */
   --primary: #66bb6a;
   --primary-light: #98ee99;
   --primary-dark: #338a3e;
+
+  /* MD Pink 300 */
   --secondary: #f06292;
   --secondary-light: #ff94c2;
   --secondary-dark: #ba2d65;
 
+  /* MD Blue 400 */
+  --blue: #42a5f5;
+  --blue-light: #80d6ff;
+  --blue-dark: #0077c2;
+
+  /* MD Red 400 */
+  --red: #ef5350;
+  --red-light: #ff867c;
+  --red-dark: #ff867c;
+
+  /* MD Yellow 400 */
+  --yellow: #ffee58;
+  --yellow-light: #ffff8b;
+  --yellow-dark: #c9bc1f;
+
+  /* MD Amber 300 */
+  --amber: #ffd54f;
+  --amber-light: #ffff81;
+  --amber-dark: #c8a415;
+
+  --white: rgba(255, 255, 255, 0.87);
   --gray-50: rgb(242, 242, 247);
   --gray-100: rgb(229, 229, 234);
   --gray-200: rgb(209, 209, 214);
@@ -29,6 +41,15 @@
   --gray-800: rgb(58, 58, 60);
   --gray-850: rgb(44, 44, 46);
   --gray-900: rgb(28, 28, 30);
+
+  --text-color: var(--gray-800);
+  --text-color-dark: var(--gray-800);
+  --button-disabled-ink-color: rgba(0, 0, 0, 0.37);
+
+  --background-color-1: white;
+  --background-color-2: white;
+  --background-color-2: white;
+  --background-color-4: white;
 
   --elevation-baseline-color: black;
   --elevation-umbra-opacity: 0.2;

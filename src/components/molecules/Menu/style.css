@@ -1,5 +1,3 @@
-@import '../../../_settngs/variables.css';
-
 /* BLOCK */
 .Menu {
   position: relative;
@@ -22,7 +20,7 @@
 
   text-align: justify;
   list-style: none;
-  background-color: white;
+  background-color: var(--background-color-2);
 }
 
 .Menu__Header {
@@ -50,6 +48,7 @@
 
 .Menu__Item:hover,
 .Menu__Item:focus {
+  color: var(--text-color-dark);
   background-color: var(--primary-light);
   cursor: pointer;
 }

@@ -1,8 +1,6 @@
-@import '../../../_settngs/variables.css';
-
 .ProgressBar {
   height: 0.375rem;
-  background-color: var(--secondary);
+  background-color: var(--secondary-light);
   animation-name: primary-translate;
   animation-duration: 500ms;
   /* animation-iteration-count: infinite; */

@@ -1,7 +1,6 @@
-@import '../../../_settngs/variables.css';
-
 .Bar {
-  background-color: white;
+  background-color: var(--white);
+  color: var(--text-color-dark);
   display: flex;
   flex-direction: column reverse;
   align-items: flex-end;
@@ -17,17 +16,17 @@
 }
 
 .Bar_stateD {
-  background-color: blue;
+  background-color: var(--blue);
 }
 
 .Bar_stateC {
-  background-color: red;
+  background-color: var(--red);
 }
 
 .Bar_stateB {
-  background-color: var(--secondary-light);
+  background-color: var(--secondary);
 }
 
 .Bar_stateA {
-  background-color: var(--primary-light);
+  background-color: var(--amber);
 }
