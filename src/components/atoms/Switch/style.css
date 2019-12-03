@@ -1,0 +1,66 @@
+.Switch {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  padding: 0 8px;
+}
+
+.Switch__Label {
+  margin-right: 4px;
+}
+
+.Switch__Button {
+  position: relative;
+  width: 48px;
+  height: 20px;
+}
+
+.Switch__Track {
+  position: absolute;
+  top: 0;
+  width: 32px;
+  height: 12px;
+  margin: 3px 6px;
+  border-radius: 8px;
+  border: 1px solid var(--text-color);
+  transition: 0.25s ease-in-out;
+}
+
+.Switch__Thumb {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  z-index: 1;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  padding: 0;
+
+  box-shadow: var(--box-shadow-2);
+  background-color: var(--text-color);
+
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+}
+
+.Switch_checked .Switch__Track {
+  background-color: var(--primary-dark);
+}
+
+.Switch_checked .Switch__Thumb {
+  margin-left: 24px;
+}
+
+/* .Switch__NativeControl {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  pointer-events: auto;
+} */
