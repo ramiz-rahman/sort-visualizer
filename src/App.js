@@ -11,6 +11,7 @@ import MergeSort from './algorithms/MergeSort';
 import QuickSort from './algorithms/QuickSort';
 import QuickSort3 from './algorithms/QuickSort3';
 import HeapSort from './algorithms/HeapSort';
+import ShellSort from './algorithms/ShellSort';
 
 class App extends Component {
   state = {
@@ -27,7 +28,8 @@ class App extends Component {
     'Merge Sort': MergeSort,
     'Quick Sort': QuickSort,
     'Quick Sort 3': QuickSort3,
-    'Heap Sort': HeapSort
+    'Heap Sort': HeapSort,
+    'Shell Sort': ShellSort
   };
 
   componentDidMount() {
