@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import './AppDark.css';
 
+import Button from './components/atoms/Button';
 import TopBar from './components/organisms/TopBar';
 import SortVisualizer from './components/organisms/SortVisualizer';
 
@@ -15,6 +17,7 @@ import ShellSort from './algorithms/ShellSort';
 
 class App extends Component {
   state = {
+    darkMode: false,
     array: [],
     arraySize: 5,
     trace: [],
@@ -76,15 +79,22 @@ class App extends Component {
     }
   };
 
+  toggleDarkMode = () => {
+    this.setState((prevState) => ({ darkMode: !prevState.darkMode }));
+  };
+
   render() {
+    let theme = `App`;
+    if (this.state.darkMode) theme += ` App_dark`;
     return (
-      <div className="App">
+      <div className={theme}>
         <TopBar
           onGenerateRandomArray={this.generateRandomArray}
           algorithm={this.state.algorithm}
           onAlgorithmChange={this.handleAlgorithmChange}
           arraySize={this.state.arraySize}
           onArraySizeChange={this.handleArraySizeChange}
+          onToggleDarkMode={this.toggleDarkMode}
         />
 
         <main className="App__Body">

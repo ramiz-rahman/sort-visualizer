@@ -1,7 +1,15 @@
 @import './_settngs/variables.css';
 
 .App {
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow: scroll;
+
   text-align: center;
+  color: var(--text-color);
+
+  background-color: var(--background-color-1);
+  transition: background-color, 0.5s ease-in;
 }
 
 .App__Body {
