@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 
 import Button from '../../atoms/Button';
+import Switch from '../../atoms/Switch';
 import Menu from '../../molecules/Menu';
 
 const TopBar = ({
@@ -10,7 +11,8 @@ const TopBar = ({
   onAlgorithmChange,
   onGenerateRandomArray,
   arraySize,
-  onArraySizeChange
+  onArraySizeChange,
+  onToggleDarkMode
 }) => {
   return (
     <header className="TopBar">
@@ -46,6 +48,8 @@ const TopBar = ({
             selected={String(arraySize)}
             onSelect={onArraySizeChange}
           />
+
+          <Switch label="Dark Mode" onSwitch={onToggleDarkMode} />
         </section>
       </div>
     </header>
@@ -57,7 +61,8 @@ TopBar.propTypes = {
   onAlgorithmChange: PropTypes.func.isRequired,
   onGenerateRandomArray: PropTypes.func.isRequired,
   arraySize: PropTypes.number,
-  onArraySizeChange: PropTypes.func.isRequired
+  onArraySizeChange: PropTypes.func.isRequired,
+  onToggleDarkMode: PropTypes.func.isRequired
 };
 
 export default TopBar;
