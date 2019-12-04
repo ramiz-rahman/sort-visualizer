@@ -47,9 +47,9 @@
   --button-disabled-ink-color: rgba(255, 255, 255, 0.37);
 
   --background-color-1: var(--gray-50);
-  --background-color-2: var(--gray-100);
   --background-color-2: var(--gray-200);
-  --background-color-4: var(--gray-300);
+  --background-color-3: var(--gray-300);
+  --background-color-4: var(--gray-400);
 
   --elevation-baseline-color: black;
   --elevation-umbra-opacity: 0.2;
