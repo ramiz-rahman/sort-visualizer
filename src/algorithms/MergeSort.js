@@ -1,4 +1,4 @@
-import { newTrace, addToTrace } from './helpers';
+import { newTrace, addToTrace, createKey } from './helpers';
 
 const MergeSort = (nums) => {
   // Initial State
@@ -81,5 +81,11 @@ const MergeSort = (nums) => {
   addToTrace(trace, nums, [...Array(nums.length).keys()]);
   return trace;
 };
+
+export const MergeSortKey = createKey(
+  'Call Merge Sort',
+  null,
+  'Overwrite from axillary array'
+);
 
 export default MergeSort;

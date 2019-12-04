@@ -2,18 +2,21 @@ import React, { Component } from 'react';
 import './App.css';
 import './AppDark.css';
 
-import Button from './components/atoms/Button';
 import TopBar from './components/organisms/TopBar';
 import SortVisualizer from './components/organisms/SortVisualizer';
 
-import BubbleSort from './algorithms/BubbleSort';
-import SelectionSort from './algorithms/SelectionSort';
-import InsertionSort from './algorithms/InsertionSort';
-import MergeSort from './algorithms/MergeSort';
-import QuickSort from './algorithms/QuickSort';
-import QuickSort3 from './algorithms/QuickSort3';
-import HeapSort from './algorithms/HeapSort';
-import ShellSort from './algorithms/ShellSort';
+import BubbleSort, { BubbleSortKey } from './algorithms/BubbleSort';
+import SelectionSort, {
+  SelectionSortKey
+} from './algorithms/SelectionSort';
+import InsertionSort, {
+  InsertionSortKey
+} from './algorithms/InsertionSort';
+import MergeSort, { MergeSortKey } from './algorithms/MergeSort';
+import QuickSort, { QuickSortKey } from './algorithms/QuickSort';
+import QuickSort3, { QuickSort3Key } from './algorithms/QuickSort3';
+import HeapSort, { HeapSortKey } from './algorithms/HeapSort';
+import ShellSort, { ShellSortKey } from './algorithms/ShellSort';
 
 class App extends Component {
   state = {
@@ -33,6 +36,17 @@ class App extends Component {
     'Quick Sort 3': QuickSort3,
     'Heap Sort': HeapSort,
     'Shell Sort': ShellSort
+  };
+
+  ALGORITHM_KEY = {
+    'Bubble Sort': BubbleSortKey,
+    'Selection Sort': SelectionSortKey,
+    'Insertion Sort': InsertionSortKey,
+    'Merge Sort': MergeSortKey,
+    'Quick Sort': QuickSortKey,
+    'Quick Sort 3': QuickSort3Key,
+    'Heap Sort': HeapSortKey,
+    'Shell Sort': ShellSortKey
   };
 
   componentDidMount() {
@@ -86,6 +100,9 @@ class App extends Component {
   render() {
     let theme = `App`;
     if (this.state.darkMode) theme += ` App_dark`;
+
+    const colorKey = this.ALGORITHM_KEY[this.state.algorithm];
+
     return (
       <div className={theme}>
         <TopBar
@@ -101,6 +118,7 @@ class App extends Component {
           <SortVisualizer
             array={this.state.array}
             trace={this.state.trace}
+            colorKey={colorKey}
           />
         </main>
       </div>

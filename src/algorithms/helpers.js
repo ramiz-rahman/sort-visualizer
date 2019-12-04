@@ -43,3 +43,7 @@ export const swap = (array, i, j) => {
 export const createRange = (start, end) => {
   return [...Array(end - start).keys()].map((elem) => elem + start);
 };
+
+export const createKey = (groupA, groupB, groupC, groupD) => {
+  return { groupA, groupB, groupC, groupD };
+};

@@ -3,7 +3,8 @@ import {
   newTrace,
   addToTrace,
   lastSorted,
-  createRange
+  createRange,
+  createKey
 } from './helpers';
 
 const HeapSort = (nums) => {
@@ -97,5 +98,12 @@ const HeapSort = (nums) => {
   heapSort(nums);
   return trace;
 };
+
+export const HeapSortKey = createKey(
+  'Comparing',
+  'Swapping',
+  null,
+  'Heap Built'
+);
 
 export default HeapSort;

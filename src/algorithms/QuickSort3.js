@@ -3,7 +3,8 @@ import {
   newTrace,
   addToTrace,
   lastSorted,
-  createRange
+  createRange,
+  createKey
 } from './helpers';
 
 const QuickSort3 = (nums) => {
@@ -144,5 +145,12 @@ const QuickSort3 = (nums) => {
 
   return trace;
 };
+
+export const QuickSort3Key = createKey(
+  'Comparing',
+  'Swapping',
+  null,
+  'Less than pivot'
+);
 
 export default QuickSort3;

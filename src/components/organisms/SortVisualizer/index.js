@@ -5,6 +5,7 @@ import './style.css';
 import SortChart from '../SortChart';
 import VisualizerControls from '../../molecules/VisualizerControls';
 import ProgressBar from '../../molecules/ProgressBar';
+import ColorKey from '../../molecules/ColorKey';
 
 class SortVisualizer extends Component {
   state = {
@@ -171,11 +172,16 @@ class SortVisualizer extends Component {
           groupD={this.state.groupD}
           sortedIndices={this.state.sortedIndices}
         />
-        <ProgressBar
-          width={
-            (this.state.traceStep / (this.state.trace.length - 1)) * 100
-          }
-        />
+
+        <div className="SortVisualizer__ProgressBar">
+          <ProgressBar
+            width={
+              (this.state.traceStep / (this.state.trace.length - 1)) *
+              100
+            }
+          />
+        </div>
+
         <VisualizerControls
           onPlay={
             this.state.traceStep === -1
@@ -200,6 +206,8 @@ class SortVisualizer extends Component {
           repeatDisabled={this.state.traceStep <= 0}
           playbackSpeed={this.state.playbackSpeed}
         />
+
+        <ColorKey {...this.props.colorKey} />
       </div>
     );
   }

@@ -2,8 +2,8 @@ import {
   swap,
   newTrace,
   addToTrace,
-  lastSorted,
-  createRange
+  createRange,
+  createKey
 } from './helpers';
 
 const ShellSort = (nums) => {
@@ -31,5 +31,7 @@ const ShellSort = (nums) => {
   addToTrace(trace, nums, createRange(0, nums.length));
   return trace;
 };
+
+export const ShellSortKey = createKey('Comparing', 'Swapping');
 
 export default ShellSort;

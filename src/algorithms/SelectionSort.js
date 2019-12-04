@@ -1,4 +1,10 @@
-import { swap, newTrace, addToTrace, lastSorted } from './helpers';
+import {
+  swap,
+  newTrace,
+  addToTrace,
+  lastSorted,
+  createKey
+} from './helpers';
 
 const SelectionSort = (nums) => {
   // Initial State
@@ -34,5 +40,7 @@ const SelectionSort = (nums) => {
 
   return trace;
 };
+
+export const SelectionSortKey = createKey('Comparing', 'Swapping');
 
 export default SelectionSort;

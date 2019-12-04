@@ -1,4 +1,10 @@
-import { swap, newTrace, addToTrace, lastSorted } from './helpers';
+import {
+  swap,
+  newTrace,
+  addToTrace,
+  lastSorted,
+  createKey
+} from './helpers';
 
 const BubbleSort = (nums) => {
   // Set up code for tracing the algorithm
@@ -26,4 +32,5 @@ const BubbleSort = (nums) => {
   return trace;
 };
 
+export const BubbleSortKey = createKey('Comparing', 'Swapping');
 export default BubbleSort;

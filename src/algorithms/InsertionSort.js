@@ -1,4 +1,4 @@
-import { newTrace, addToTrace } from './helpers';
+import { newTrace, addToTrace, createKey } from './helpers';
 
 const InsertionSort = (nums) => {
   // Initial State
@@ -29,5 +29,11 @@ const InsertionSort = (nums) => {
   addToTrace(trace, nums, [...Array(nums.length).keys()]);
   return trace;
 };
+
+export const InsertionSortKey = createKey(
+  'Comparing',
+  'Swapping',
+  'Overwrite from memory'
+);
 
 export default InsertionSort;
