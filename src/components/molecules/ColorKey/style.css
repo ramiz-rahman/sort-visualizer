@@ -1,0 +1,32 @@
+.ColorKey {
+  display: flex;
+  padding: 0.75rem;
+}
+
+.ColorKey__Item {
+  display: inline-flex;
+  margin-right: 4rem;
+}
+
+.ColorKey__Box {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.5rem;
+}
+
+.ColorKey__Sorted {
+  background-color: var(--primary-dark);
+}
+
+.ColorKey__GroupA {
+  background-color: var(--amber);
+}
+.ColorKey__GroupB {
+  background-color: var(--secondary);
+}
+.ColorKey__GroupC {
+  background-color: var(--red);
+}
+.ColorKey__GroupD {
+  background-color: var(--blue);
+}
