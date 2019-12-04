@@ -3,37 +3,38 @@ import PropTypes from 'prop-types';
 import './style.css';
 
 const ColorKey = ({ groupA, groupB, groupC, groupD }) => {
-  const keySorted = (
-    <div className="ColorKey__Item">
-      <div class="ColorKey__Box ColorKey__Sorted"></div>
-      <span>Sorted</span>
-    </div>
-  );
+  const keySorted =
+    groupA || groupB || groupC || groupD ? (
+      <div className="ColorKey__Item">
+        <div className="ColorKey__Box ColorKey__Sorted"></div>
+        <span>Sorted</span>
+      </div>
+    ) : null;
 
   const keyA = groupA ? (
     <div className="ColorKey__Item">
-      <div class="ColorKey__Box ColorKey__GroupA"></div>
+      <div className="ColorKey__Box ColorKey__GroupA"></div>
       <span>{groupA}</span>
     </div>
   ) : null;
 
   const keyB = groupB ? (
     <div className="ColorKey__Item">
-      <div class="ColorKey__Box ColorKey__GroupB"></div>
+      <div className="ColorKey__Box ColorKey__GroupB"></div>
       <span>{groupB}</span>
     </div>
   ) : null;
 
   const keyC = groupC ? (
     <div className="ColorKey__Item">
-      <div class="ColorKey__Box ColorKey__GroupC"></div>
+      <div className="ColorKey__Box ColorKey__GroupC"></div>
       <span>{groupC}</span>
     </div>
   ) : null;
 
   const keyD = groupD ? (
     <div className="ColorKey__Item">
-      <div class="ColorKey__Box ColorKey__GroupD"></div>
+      <div className="ColorKey__Box ColorKey__GroupD"></div>
       <span>{groupD}</span>
     </div>
   ) : null;
