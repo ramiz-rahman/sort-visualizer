@@ -6,6 +6,7 @@ import SortChart from '../SortChart';
 import VisualizerControls from '../../molecules/VisualizerControls';
 import ProgressBar from '../../molecules/ProgressBar';
 import ColorKey from '../../molecules/ColorKey';
+import SortInfo from '../../molecules/SortInfo';
 
 class SortVisualizer extends Component {
   state = {
@@ -208,6 +209,8 @@ class SortVisualizer extends Component {
         />
 
         <ColorKey {...this.props.colorKey} />
+
+        <SortInfo {...this.props.desc} />
       </div>
     );
   }

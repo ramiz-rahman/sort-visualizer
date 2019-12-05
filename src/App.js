@@ -5,18 +5,35 @@ import './AppDark.css';
 import TopBar from './components/organisms/TopBar';
 import SortVisualizer from './components/organisms/SortVisualizer';
 
-import BubbleSort, { BubbleSortKey } from './algorithms/BubbleSort';
+import BubbleSort, {
+  BubbleSortKey,
+  BubbleSortDesc
+} from './algorithms/BubbleSort';
 import SelectionSort, {
-  SelectionSortKey
+  SelectionSortKey,
+  SelectionSortDesc
 } from './algorithms/SelectionSort';
 import InsertionSort, {
-  InsertionSortKey
+  InsertionSortKey,
+  InsertionSortDesc
 } from './algorithms/InsertionSort';
-import MergeSort, { MergeSortKey } from './algorithms/MergeSort';
-import QuickSort, { QuickSortKey } from './algorithms/QuickSort';
-import QuickSort3, { QuickSort3Key } from './algorithms/QuickSort3';
-import HeapSort, { HeapSortKey } from './algorithms/HeapSort';
-import ShellSort, { ShellSortKey } from './algorithms/ShellSort';
+import MergeSort, {
+  MergeSortKey,
+  MergeSortDesc
+} from './algorithms/MergeSort';
+import QuickSort, {
+  QuickSortKey,
+  QuickSortDesc
+} from './algorithms/QuickSort';
+import QuickSort3, {
+  QuickSort3Key,
+  QuickSort3Desc
+} from './algorithms/QuickSort3';
+import HeapSort, {
+  HeapSortKey,
+  HeapSortDesc
+} from './algorithms/HeapSort';
+import ShellSort, { ShellSortKey, ShellSortDesc } from './algorithms/ShellSort';
 
 class App extends Component {
   state = {
@@ -47,6 +64,17 @@ class App extends Component {
     'Quick Sort 3': QuickSort3Key,
     'Heap Sort': HeapSortKey,
     'Shell Sort': ShellSortKey
+  };
+
+  ALGORITHM_DESC = {
+    'Bubble Sort': BubbleSortDesc,
+    'Selection Sort': SelectionSortDesc,
+    'Insertion Sort': InsertionSortDesc,
+    'Merge Sort': MergeSortDesc,
+    'Quick Sort': QuickSortDesc,
+    'Quick Sort 3': QuickSort3Desc,
+    'Heap Sort': HeapSortDesc,
+    'Shell Sort': ShellSortDesc
   };
 
   componentDidMount() {
@@ -102,6 +130,7 @@ class App extends Component {
     if (this.state.darkMode) theme += ` App_dark`;
 
     const colorKey = this.ALGORITHM_KEY[this.state.algorithm];
+    const desc = this.ALGORITHM_DESC[this.state.algorithm];
 
     return (
       <div className={theme}>
@@ -119,6 +148,7 @@ class App extends Component {
             array={this.state.array}
             trace={this.state.trace}
             colorKey={colorKey}
+            desc={desc}
           />
         </main>
       </div>

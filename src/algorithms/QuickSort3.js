@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   swap,
   newTrace,
@@ -152,5 +153,58 @@ export const QuickSort3Key = createKey(
   null,
   'Less than pivot'
 );
+
+export const QuickSort3Desc = {
+  title: 'Quick Sort 3-Way Partitioning',
+  description: (
+    <div>
+      <p>
+        <a
+          href="https://en.wikipedia.org/wiki/Quicksort#Repeated_elements"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Quick Sort
+        </a>{' '}
+        exhibits poor performance on arrays that contain many repeated
+        elements. This issue (
+        <a
+          href="https://en.wikipedia.org/wiki/Dutch_national_flag_problem"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Dutch national flag problem
+        </a>
+        ) can be solved by using an alternative linear-time partitioning
+        routine that separates the values into three groups: values less
+        than the pivot, values equal to the pivot, and values greater
+        than the pivot. The values equal to the pivot are already
+        sorted, so only the less-than and greater-than partitions need
+        to be recursively sorted.
+      </p>
+    </div>
+  ),
+  worstCase: (
+    <span>
+      O(<em>n</em>
+      <sup>2</sup>)
+    </span>
+  ),
+  avgCase: (
+    <span>
+      O(<em>n</em> log <em>n</em>)
+    </span>
+  ),
+  bestCase: (
+    <span>
+      O(<em>n</em>)
+    </span>
+  ),
+  space: (
+    <span>
+      O(log <em>n</em>)
+    </span>
+  )
+};
 
 export default QuickSort3;

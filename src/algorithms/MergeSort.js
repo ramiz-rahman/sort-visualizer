@@ -1,3 +1,4 @@
+import React from 'react';
 import { newTrace, addToTrace, createKey } from './helpers';
 
 const MergeSort = (nums) => {
@@ -87,5 +88,55 @@ export const MergeSortKey = createKey(
   null,
   'Overwrite from axillary array'
 );
-
+export const MergeSortDesc = {
+  title: 'Merge Sort',
+  description: (
+    <div>
+      <p>
+        <a
+          href="https://en.wikipedia.org/wiki/Merge_sort"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Merge Sort
+        </a>{' '}
+        is an efficient, stable sorting algorith that makes use of the
+        divide and conquer strategy. Conceptually the algorithm works as
+        follows:
+      </p>
+      <ol>
+        <li>
+          Divide the unsorted list into <em>n</em> sublists, each
+          containing one element(a list of one element is considered
+          sorted)
+        </li>
+        <li>
+          Repeatedly merge sublists to produce new sorted sublists until
+          there is only one sublist remaining. This will be the sorted
+          list.
+        </li>
+      </ol>
+    </div>
+  ),
+  worstCase: (
+    <span>
+      O(<em>n</em> log <em>n</em>)
+    </span>
+  ),
+  avgCase: (
+    <span>
+      O(<em>n</em> log <em>n</em>)
+    </span>
+  ),
+  bestCase: (
+    <span>
+      O(<em>n</em> log <em>n</em>)
+    </span>
+  ),
+  space: (
+    <span>
+      O(<em>n</em>)
+    </span>
+  )
+};
 export default MergeSort;
