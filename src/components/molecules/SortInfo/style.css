@@ -1,0 +1,44 @@
+.SortInfo {
+  text-align: left;
+  /* background-color: peachpuff; */
+  width: 80%;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.SortInfo__Body {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.SortInfo__Article {
+  width: 60ch;
+  padding-right: 5ch;
+  line-height: 1.3;
+}
+
+.SortInfo__Article li {
+  line-height: 1.5;
+}
+
+.SortInfo__Article a {
+  color: var(--secondary);
+}
+
+.SortInfo__Article a:hover {
+  color: var(--secondary-dark);
+}
+
+.SortInfo__Aside {
+  padding-left: 5ch;
+  border-left: 1px solid var(--text-color);
+}
+
+.SortInfo__Aside h3 {
+  margin: 1rem 0;
+}
+
+.SortInfo__Aside code {
+  padding-left: 1rem;
+  font-weight: 700;
+}
