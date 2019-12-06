@@ -3,66 +3,27 @@ import PropTypes from 'prop-types';
 import './style.css';
 
 import Button from '../../atoms/Button';
-import Switch from '../../atoms/Switch';
-import Menu from '../../molecules/Menu';
+import { MdMenu as Hamburger, MdClose as Close } from 'react-icons/md';
 
-const TopBar = ({
-  algorithm,
-  onAlgorithmChange,
-  onGenerateRandomArray,
-  arraySize,
-  onArraySizeChange,
-  onToggleDarkMode
-}) => {
+const TopBar = ({ drawerOpen, toggleDrawer, children }) => {
   return (
     <header className="TopBar">
       <div className="TopBar__Row">
         <section className="TopBar__Section">
-          {/* <button>Menu</button> */}
+          <Button
+            icon={drawerOpen ? Close : Hamburger}
+            className="TopBar__MenuButton"
+            iconClass="TopBar__Icon"
+            onClick={toggleDrawer}
+          />
           <span className="TopBar__Title">Sorting Visualizer</span>
         </section>
         <section className="TopBar__Section TopBar__Section_align_end">
-          <Menu
-            placeholder="Sort Algorithm"
-            items={[
-              'Bubble Sort',
-              'Selection Sort',
-              'Insertion Sort',
-              'Merge Sort',
-              'Quick Sort',
-              'Quick Sort 3',
-              'Heap Sort',
-              'Shell Sort'
-            ]}
-            selected={algorithm}
-            onSelect={onAlgorithmChange}
-          />
-
-          <Button onClick={onGenerateRandomArray}>
-            Generate New Array
-          </Button>
-
-          <Menu
-            placeholder="Array Size"
-            items={['5', '10', '25', '50', '75', '100']}
-            selected={String(arraySize)}
-            onSelect={onArraySizeChange}
-          />
-
-          <Switch label="Dark Mode" onSwitch={onToggleDarkMode} />
+          {children}
         </section>
       </div>
     </header>
   );
-};
-
-TopBar.propTypes = {
-  algorithm: PropTypes.string,
-  onAlgorithmChange: PropTypes.func.isRequired,
-  onGenerateRandomArray: PropTypes.func.isRequired,
-  arraySize: PropTypes.number,
-  onArraySizeChange: PropTypes.func.isRequired,
-  onToggleDarkMode: PropTypes.func.isRequired
 };
 
 export default TopBar;

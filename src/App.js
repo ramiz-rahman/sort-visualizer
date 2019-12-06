@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import './AppDark.css';
 
+import AppControls from './components/molecules/AppControls';
 import TopBar from './components/organisms/TopBar';
+import AppDrawer from './components/organisms/AppDrawer';
 import SortVisualizer from './components/organisms/SortVisualizer';
 
 import BubbleSort, {
@@ -33,7 +35,10 @@ import HeapSort, {
   HeapSortKey,
   HeapSortDesc
 } from './algorithms/HeapSort';
-import ShellSort, { ShellSortKey, ShellSortDesc } from './algorithms/ShellSort';
+import ShellSort, {
+  ShellSortKey,
+  ShellSortDesc
+} from './algorithms/ShellSort';
 
 class App extends Component {
   state = {
@@ -41,7 +46,8 @@ class App extends Component {
     array: [],
     arraySize: 5,
     trace: [],
-    algorithm: null
+    algorithm: null,
+    appDrawerOpen: false
   };
 
   ALGORITHM = {
@@ -125,23 +131,46 @@ class App extends Component {
     this.setState((prevState) => ({ darkMode: !prevState.darkMode }));
   };
 
+  toggleAppDrawer = () => {
+    this.setState((prevState) => ({
+      appDrawerOpen: !prevState.appDrawerOpen
+    }));
+  };
+
   render() {
     let theme = `App`;
     if (this.state.darkMode) theme += ` App_dark`;
+    if (this.state.appDrawerOpen) theme += ` App_modal_open`;
 
     const colorKey = this.ALGORITHM_KEY[this.state.algorithm];
     const desc = this.ALGORITHM_DESC[this.state.algorithm];
 
+    const controls = (
+      <AppControls
+        onGenerateRandomArray={this.generateRandomArray}
+        algorithm={this.state.algorithm}
+        onAlgorithmChange={this.handleAlgorithmChange}
+        arraySize={this.state.arraySize}
+        onArraySizeChange={this.handleArraySizeChange}
+        onToggleDarkMode={this.toggleDarkMode}
+      />
+    );
+
     return (
       <div className={theme}>
         <TopBar
-          onGenerateRandomArray={this.generateRandomArray}
-          algorithm={this.state.algorithm}
-          onAlgorithmChange={this.handleAlgorithmChange}
-          arraySize={this.state.arraySize}
-          onArraySizeChange={this.handleArraySizeChange}
-          onToggleDarkMode={this.toggleDarkMode}
-        />
+          drawerOpen={this.state.appDrawerOpen}
+          toggleDrawer={this.toggleAppDrawer}
+        >
+          {controls}
+        </TopBar>
+
+        <AppDrawer
+          open={this.state.appDrawerOpen}
+          closeDrawer={this.toggleAppDrawer}
+        >
+          {controls}
+        </AppDrawer>
 
         <main className="App__Body">
           <SortVisualizer
