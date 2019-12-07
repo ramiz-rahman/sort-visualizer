@@ -1,10 +1,15 @@
 @import './_settngs/variables.css';
 
 .App {
+  --footer-height: 64px;
+
+  box-sizing: border-box;
   min-height: 100vh;
   min-width: 100vw;
+  position: relative;
   overflow: scroll;
 
+  padding-bottom: var(--footer-height);
   text-align: center;
   color: var(--text-color);
 
@@ -19,4 +24,14 @@
 .App_modal_open {
   height: 100vh;
   overflow-y: hidden;
+}
+
+.App_modal_open footer {
+  display: none;
+}
+
+@media (max-width: 599px) {
+  .App {
+    --footer-height: 160px;
+  }
 }

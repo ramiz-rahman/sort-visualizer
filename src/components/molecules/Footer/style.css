@@ -1,13 +1,18 @@
 .Footer {
   box-sizing: border-box;
-  height: 64px;
+  min-height: 64px;
   width: 100%;
-  padding: 0 20px;
+  padding: 1rem 20px;
+
+  position: absolute;
+  bottom: 0;
 
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
+
+  text-align: center;
   word-spacing: 0.25rem;
 
   background-color: var(--background-color-2);
@@ -17,12 +22,20 @@
 }
 
 .Footer__Items {
+  flex-grow: 1;
   display: inline-flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+}
+
+@media (max-width: 599px) {
+  .Footer__Items {
+    flex-flow: column;
+    padding: 0.5rem;
+  }
 }
 
 .Footer__Items * {
-  padding: 0 1rem;
+  padding: 0.25rem 1rem;
 }
 
 .Footer__Heart {

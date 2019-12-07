@@ -42,6 +42,7 @@ const VisualizerControls = ({
         icon={Repeat}
         onClick={onRepeat}
         disabled={isDisabled(onRepeat, repeatDisabled)}
+        className="VisualizerControls__Button"
       />
 
       {/* Backward Button  */}
@@ -50,6 +51,7 @@ const VisualizerControls = ({
         onClick={onBackward}
         disabled={isDisabled(onBackward, backwardDisabled)}
         iconClass="VisualizerControls__Icon"
+        className="VisualizerControls__Button"
       />
 
       {/* Play or Pause button - context dependent */}
@@ -72,6 +74,7 @@ const VisualizerControls = ({
         onClick={onForward}
         disabled={isDisabled(onForward, forwardDisabled)}
         iconClass="VisualizerControls__Icon"
+        className="VisualizerControls__Button"
       />
 
       {/* Playback Speed */}
@@ -81,6 +84,7 @@ const VisualizerControls = ({
         selected={`${playbackSpeed}x`}
         onSelect={onAdjustSpeed}
         noDropIcon
+        className="VisualizerControls__SpeedButton"
       />
     </div>
   );

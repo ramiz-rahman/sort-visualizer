@@ -71,7 +71,7 @@ class SortVisualizer extends Component {
 
   run = (trace) => {
     const timeoutIds = [];
-    const timer = 500 / this.state.playbackSpeed;
+    const timer = 250 / this.state.playbackSpeed;
 
     // Set a timeout for each item in the trace
     trace.forEach((item, i) => {
@@ -156,12 +156,6 @@ class SortVisualizer extends Component {
   };
 
   render() {
-    // Chart
-    // Controls
-    // Progress Bar
-    // Expand Button
-    // Legend
-
     return (
       <div className="SortVisualizer">
         <SortChart
@@ -177,8 +171,11 @@ class SortVisualizer extends Component {
         <div className="SortVisualizer__ProgressBar">
           <ProgressBar
             width={
-              (this.state.traceStep / (this.state.trace.length - 1)) *
-              100
+              this.state.trace.length > 0
+                ? (this.state.traceStep /
+                    (this.state.trace.length - 1)) *
+                  100
+                : 0
             }
           />
         </div>

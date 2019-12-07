@@ -9,7 +9,12 @@ const ColorKey = ({ groupA, groupB, groupC, groupD }) => {
         <div className="ColorKey__Box ColorKey__Sorted"></div>
         <span>Sorted</span>
       </div>
-    ) : null;
+    ) : (
+      <div className="ColorKey__Item">
+        <div className="ColorKey__Box ColorKey__Unsorted"></div>
+        <span>Unsorted</span>
+      </div>
+    );
 
   const keyA = groupA ? (
     <div className="ColorKey__Item">

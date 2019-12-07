@@ -6,6 +6,7 @@ import AppControls from './components/molecules/AppControls';
 import TopBar from './components/organisms/TopBar';
 import AppDrawer from './components/organisms/AppDrawer';
 import SortVisualizer from './components/organisms/SortVisualizer';
+import Footer from './components/molecules/Footer';
 
 import BubbleSort, {
   BubbleSortKey,
@@ -44,7 +45,7 @@ class App extends Component {
   state = {
     darkMode: false,
     array: [],
-    arraySize: 5,
+    arraySize: 10,
     trace: [],
     algorithm: null,
     appDrawerOpen: false
@@ -153,6 +154,7 @@ class App extends Component {
         arraySize={this.state.arraySize}
         onArraySizeChange={this.handleArraySizeChange}
         onToggleDarkMode={this.toggleDarkMode}
+        darkMode={this.state.darkMode}
       />
     );
 
@@ -180,6 +182,7 @@ class App extends Component {
             desc={desc}
           />
         </main>
+        <Footer />
       </div>
     );
   }

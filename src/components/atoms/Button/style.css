@@ -21,7 +21,7 @@
   position: relative;
   align-items: center;
   justify-content: center;
-  min-width: 64px;
+  min-width: 48px;
   height: var(--button-height);
   border: none;
   outline: none;

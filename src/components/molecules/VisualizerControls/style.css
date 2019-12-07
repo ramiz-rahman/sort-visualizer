@@ -1,9 +1,11 @@
+/* BLOCK */
 .VisualizerControls {
   display: inline-flex;
   align-items: center;
   padding: 1rem 0;
 }
 
+/* ELEMENT */
 .VisualizerControls__CenterButton {
   height: 4rem;
   width: 4rem;
@@ -19,6 +21,14 @@
 
 .VisualizerControls__CenterButton:disabled {
   background-color: var(--gray-500);
+}
+
+.VisualizerControls__Button {
+  padding: 0 12px;
+}
+
+.VisualizerControls__SpeedButton {
+  padding-right: 12px;
 }
 
 .VisualizerControls__Icon {

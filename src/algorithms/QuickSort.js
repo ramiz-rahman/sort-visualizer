@@ -174,17 +174,17 @@ export const QuickSortDesc = {
   ),
   avgCase: (
     <span>
-      O(<em>n</em> log <em>n</em>)
+      O(<em>n</em>log<em>n</em>)
     </span>
   ),
   bestCase: (
     <span>
-      O(<em>n</em> log <em>n</em>)
+      O(<em>n</em>log<em>n</em>)
     </span>
   ),
   space: (
     <span>
-      O(log <em>n</em>)
+      O(log<em>n</em>)
     </span>
   )
 };

@@ -12,7 +12,8 @@ const AppControls = ({
   onGenerateRandomArray,
   arraySize,
   onArraySizeChange,
-  onToggleDarkMode
+  onToggleDarkMode,
+  darkMode
 }) => {
   return (
     <Fragment>
@@ -44,7 +45,11 @@ const AppControls = ({
 
       <Button onClick={onGenerateRandomArray}>Randomize</Button>
 
-      <Switch label="Dark Mode" onSwitch={onToggleDarkMode} />
+      <Switch
+        label="Dark Mode"
+        onSwitch={onToggleDarkMode}
+        checked={darkMode}
+      />
     </Fragment>
   );
 };
@@ -55,7 +60,8 @@ AppControls.propTypes = {
   onGenerateRandomArray: PropTypes.func.isRequired,
   arraySize: PropTypes.number,
   onArraySizeChange: PropTypes.func.isRequired,
-  onToggleDarkMode: PropTypes.func.isRequired
+  onToggleDarkMode: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool
 };
 
 export default AppControls;

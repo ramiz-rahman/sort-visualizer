@@ -7,6 +7,18 @@ class Switch extends Component {
     checked: false
   };
 
+  componentDidMount() {
+    if (this.props.checked) {
+      this.setState({ checked: this.props.checked });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.checked !== this.props.checked) {
+      this.setState({ checked: this.props.checked });
+    }
+  }
+
   toggleChecked = () => {
     this.setState((prevState) => ({ checked: !prevState.checked }));
   };
