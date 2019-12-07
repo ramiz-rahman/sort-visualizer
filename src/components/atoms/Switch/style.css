@@ -41,9 +41,10 @@
 
   box-shadow: var(--box-shadow-2);
   background-color: var(--text-color);
+  -webkit-tap-highlight-color: transparent;
 
   cursor: pointer;
-  transition: 0.25s ease-in-out;
+  transition: 500ms ease-out;
 }
 
 .Switch_checked .Switch__Track {

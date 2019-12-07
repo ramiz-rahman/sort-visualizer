@@ -27,7 +27,7 @@ const Footer = (props) => {
           Demo
         </a>
         <a
-          href="https://www.linkedin.com/in/ramiz-rahman/"
+          href="https://github.com/ramiz-rahman/sort-visualizer"
           target="_blank"
           rel="noopener noreferrer"
           className="Footer__Link"

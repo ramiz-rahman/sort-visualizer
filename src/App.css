@@ -14,7 +14,8 @@
   color: var(--text-color);
 
   background-color: var(--background-color-1);
-  transition: background-color, 0.5s ease-in;
+  transition: color 250ms;
+  transition: background-color 500ms ease-in-out;
 }
 
 .App__Body {

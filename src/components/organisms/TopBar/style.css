@@ -19,7 +19,7 @@
   box-shadow: var(--elevation-umbra-4) var(--elevation-umbra-color),
     var(--elevation-penumbra-4) var(--elevation-penumbra-color);
 
-  transition: 0.75s ease-in-out;
+  transition: background-color 500ms ease-in-out;
 }
 
 /* Default Mobile Styles */
