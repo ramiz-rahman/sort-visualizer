@@ -19,7 +19,7 @@ const Footer = (props) => {
 
       <section className="Footer__Items">
         <a
-          href="https://www.linkedin.com/in/ramiz-rahman/"
+          href="https://youtu.be/JFjvVmvC3pQ"
           target="_blank"
           rel="noopener noreferrer"
           className="Footer__Link"
