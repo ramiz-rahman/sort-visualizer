@@ -1,0 +1,12 @@
+# These rules will change if you change your site’s custom domains or HTTPS settings
+
+# Redirect domain aliases to primary domain
+https://sortvisualizer.ramizrahman.com/* https://sort-visualizer.ramizrahman.com/:splat 301!
+https://sorting-visualizer.ramizrahman.com/* https://sort-visualizer.ramizrahman.com/:splat 301!
+https://sortingvisualizer.ramizrahman.com/* https://sort-visualizer.ramizrahman.com/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://sort-visualizer.netlify.com/* https://sort-visualizer.ramizrahman.com/:splat 301!
+
+# Delegate all requests to React Router 
+# /*    /index.html   200
