@@ -9,10 +9,7 @@
   position: absolute;
   z-index: 110;
   top: 100%;
-  left: 0;
-  right: 0;
 
-  max-height: 80vh;
   padding: 0;
   margin: 0;
   border-top: 2px solid var(--primary);
@@ -21,7 +18,6 @@
   text-align: justify;
   list-style: none;
   background-color: var(--background-color-2);
-  overflow: scroll;
 }
 
 .Menu__Header {
